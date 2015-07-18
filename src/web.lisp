@@ -9,7 +9,8 @@
         :sxql
         :quickdocs-database)
   (:import-from :quickdocs-server.search
-                :search-projects)
+                :search-projects
+                :download-stats)
   (:import-from :lack.component
                 :call)
   (:import-from :datafly
@@ -113,7 +114,9 @@
              :projects (mapcar (lambda (project)
                                  (list :name (project-name project)
                                        :release-version (project-release-version project)
-                                       :description (project-description project)))
+                                       :description (project-description project)
+                                       :download-count (gethash (project-name project)
+                                                                (quickdocs-server.search:download-stats))))
                                projects)
              :query |q|))))
 

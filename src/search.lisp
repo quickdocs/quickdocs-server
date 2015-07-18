@@ -11,18 +11,36 @@
 
 (syntax:use-syntax :annot)
 
+(defvar *ql-download-stats* nil)
+
+@export
+(defun download-stats ()
+  (or *ql-download-stats*
+      (loop with hash = (make-hash-table :test 'equal)
+            for row in (retrieve-all
+                        (select :*
+                          (from :quicklisp_download_stats)))
+            do (setf (gethash (getf row :project-name) hash)
+                     (getf row :download-count))
+            finally
+               (return (setf *ql-download-stats* hash)))))
+
+(defun sort-by-download-count (a b)
+  (let ((stats (download-stats)))
+    (> (gethash (project-name a) stats 0)
+       (gethash (project-name b) stats 0 ))))
+
 @export
 (defun search-projects (query &optional (ql-dist-version
                                          (preference "ql-dist-version")))
-  ;; TODO: sort
   (if (and query
            (/= 0 (length query)))
       (remove-duplicates
        (append
         (ensure-list (search-exact-project query ql-dist-version))
-        (search-by-categories query ql-dist-version)
-        (search-by-name query ql-dist-version)
-        (search-by-description query ql-dist-version))
+        (sort (search-by-categories query ql-dist-version) #'sort-by-download-count)
+        (sort (search-by-name query ql-dist-version) #'sort-by-download-count)
+        (sort (search-by-description query ql-dist-version) #'sort-by-download-count))
        :test #'eql
        :key #'project-id
        :from-end t)
@@ -46,8 +64,7 @@
          (rows (retrieve-all
                 (select (:project_name :category)
                   (from :cliki_project_category)
-                  (where (:like :category (format nil "%~(~A~)%" query)))
-                  (group-by :category))))
+                  (where (:like (:lower :category) (format nil "%~(~A~)%" query))))))
          (rows (remove-if-not
                 (lambda (row)
                   (ppcre:scan scanner (getf row :category)))

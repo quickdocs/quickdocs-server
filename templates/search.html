@@ -29,6 +29,9 @@
       {{ project.release-version }}
     </span>
     <p class="description">{{ project.description }}</p>
+    {% if project.download-count %}
+    <div class="download-count"><span class="lsf">download</span>&nbsp;{{ project.download-count }}</div>
+    {% endif %}
   </li>
 {% endfor %}
 </ul>
