@@ -1,0 +1,38 @@
+{% extends "layouts/default.html" %}
+{% block title %}Search Results | Quickdocs{% endblock %}
+{% block css %}
+<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css">
+{% endblock %}
+{% block content %}
+<header>
+  {% if query == "" %}
+  <h2>All {{ projects | length }} Projects</h2>
+  {% else %}
+  <h2>Search Results</h2>
+  <div class="search-query">for <strong>{{ query }}</strong></span>
+  {% endif %}
+  <br />
+</header>
+
+{% if query != "" %}
+<p class="search-results-summary"><strong>{{ projects | length }}</strong> projects are found.</p>
+{% endif %}
+
+{% if projects %}
+<ul class="search-result-container">
+{% for project in projects %}
+  <li class="search-result">
+    <span class="project-name">
+      <a href="/{{ project.name }}/">{{ project.name }}</a>
+    </span>
+    <span class="ql-version">
+      {{ project.release-version }}
+    </span>
+    <p class="description">{{ project.description }}</p>
+  </li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% include "partials/footer.html" %}
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends "layouts/default.html" %}
+{% block title %}{{ project-name }} | Quickdocs{% endblock %}
+{% block css %}
+<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css">
+{% endblock %}
+{% block content %}
+<header>
+  <h2 class="project-name"><a href="/{{ project-name }}/">{{ project-name }}</a></h2>
+  <span class="subtitle">API Reference</span>
+  {% include "partials/header-links.html" %}
+</header>
+
+<nav class="toc-systems">
+  <header><h2>Systems</h2></header>
+  <dl>
+    {% for system in systems %}
+    <dt><a href="#system-{{ system.name }}">{{ system.name }}</a></dt>
+    {% if system.description %}
+    <dd class="one-line-description">{{ system.description }}</dd>
+    {% endif %}
+    {% endfor %}
+  </dl>
+</nav>
+
+{% for system in systems %}
+<article class="system">
+  <nav class="toc">
+  <h3>Package Index</h3>
+  <ul class="toc-packages">
+    {% for package in system.packages %}
+      <li><a href="#package-{{ package.name }}" title="{{ package.name }}">{{ package.name }}</a></li>
+    {% endfor %}
+  </ul>
+  </nav>
+
+  <header>
+    <h1 id="system-{{ system.name }}">{{ system.name }}</h1>
+    {% if system.description %}
+    <p class="description">{{ system.description }}</p>
+    {% endif %}
+  </header>
+
+  <div class="api">
+    {% for package in system.packages %}
+      <section class="package">
+        <h2 id="package-{{ package.name }}">{{ package.name }}</h2>
+        {% if package.docstring %}
+        <div class="docstring"><pre>{{ package.docstring }}</pre></div>
+        {% endif %}
+        <ul>
+          {% for symbol in package.symbols %}
+          {% if symbol.externalp %}
+          <li class="symbol">
+            <span class="symbol-type label {{ symbol.type }}">{{ symbol.type | capfirst }}</span>
+            <code class="symbol-name">
+            {% if symbol.setfp %}
+            (setf {{ symbol.name }})
+            {% else %}
+            {{ symbol.name }}
+            {% endif %}
+            </code>
+            {% if symbol.lambda-list %}
+            <span class="lambda-list">
+              {{ symbol.lambda-list | lambda-list | safe }}
+            </span>
+            {% endif %}
+            {% if symbol.initial-value %}
+            {% endif %}
+            <div class="docstring">{{ symbol.docstring }}</div>
+            {% if symbol.type == "class" %}
+            {% if symbol.slots %}
+            <dl class="slot-list">
+              {% for slot in symbol.slots %}
+              <dt>
+                <code class="symbol-name">{{ slot.name | symbol }}</code>
+                {% if slot.accessors %}
+                <span class="label">Accessor</span>:
+                {% for accessor in slot.accessors %}
+                <code class="symbol-name">{{ accessor }}</code>{% if not forloop.last %} {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% if slot.readers %}
+                <span class="label">Reader</span>:
+                {% for reader in slot.readers %}
+                <code class="symbol-name">{{ reader }}</code>{% if not forloop.last %} {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% if slot.writers %}
+                <span class="label">Writer</span>:
+                {% for writer in slot.writer %}
+                <code class="symbol-name">{{ writer }}</code>{% if not forloop.last %} {% endif %}
+                {% endfor %}
+                {% endif %}
+              </dt>
+              {% if slot.docstring %}
+              <dd>{{ slot.docstring }}</dd>
+              {% endif %}
+              {% endfor %}
+            </dl>
+            {% else %}
+            No slots
+            {% endif %}
+            {% endif %}
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </section>
+    {% endfor %}
+  </div>
+</article>
+{% endfor %}
+
+{% include "partials/footer.html" %}
+
+<ul class="breadcrumb-header-container" style="display: none">
+  <li><a href="#global-header" class="top-link lsf">home</a></li>
+</ul>
+<div class="pager-link-container" style="display: none">
+  <a class="pager-link lsf-icon" title="up">Prev</a>
+  <a class="pager-link lsf-icon" title="down">Next</a>
+</div>
+{% endblock %}

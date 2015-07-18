@@ -1,0 +1,98 @@
+{% extends "layouts/default.html" %}
+{% block title %}{{ project-name }} | Quickdocs{% endblock %}
+{% block css %}
+<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css">
+{% endblock %}
+{% block content %}
+<header>
+  <h2 class="project-name"><a href="/{{ project-name }}/">{{ project-name }}</a></h2>
+  <span class="subtitle ql-version">{{ ql-dist-version }}</span>
+  {% include "partials/header-links.html" %}
+</header>
+
+<article>
+{% if readme %}
+<section class="readme">
+  <div class="readme-body">{{ readme | safe }}</div>
+</section>
+{% endif %}
+
+{% if authors or maintainers or licenses or categories %}
+<section class="information">
+  <dl>
+    {% if authors %}
+    <dt>Author</dt>
+    <dd>{{ authors | join:", " }}</dd>
+    {% endif %}
+    {% if maintainers %}
+    <dt>Maintainer</dt>
+    <dd>{{ maintainers | join:", " }}</dd>
+    {% endif %}
+    {% if licenses %}
+    <dt>License</dt>
+    <dd>{{ licenses | join:", " }}</dd>
+    {% endif %}
+    {% if categories %}
+    <dt>Categories</dt>
+    <dd>
+      {% for category in categories %}
+      <a href="/search?q={{ category }}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
+      {% endfor %}
+    </dd>
+    {% endif %}
+  </dl>
+</section>
+{% endif %}
+
+<aside class="dependencies">
+  <h3>Requirements</h3>
+  <span class="count">{{ dependencies-count }}</span>
+  {% if dependencies %}
+  <ul class="folding-list">
+    {% for dependency in dependencies %}
+    <li>
+      <a href="/{{ dependency.name }}">
+        <span class="name">{{ dependency.name }}</span>
+        <span class="description">{{ dependency.description }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <em class="none">None.</em>
+  {% endif %}
+</aside>
+
+<aside class="depending">
+  <h3>Required by</h3>
+  <span class="count">{{ dependees | length }}</span>
+  {% if dependees %}
+  <ul class="folding-list">
+    {% for dependee in dependees %}
+    <li>
+      <a href="/{{ dependee.name }}">
+        <span class="name">{{ dependee.name }}</span>
+        <span class="description">{{ dependee.description }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</aside>
+
+<aside class="links">
+  <h3>Links</h3>
+  <ul>
+    <li><a href="/{{ project-name }}/api">API Reference</a></li>
+    {% if homepage %}
+    <li><a href="{{ homepage }}">Website</a></li>
+    {% endif %}
+    {% if repos-url %}
+    <li><a href="{{ repos-url }}">Source Code</a></li>
+    {% endif %}
+  </ul>
+</aside>
+</article>
+
+{% include "partials/footer.html" %}
+{% endblock %}
