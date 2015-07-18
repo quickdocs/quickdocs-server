@@ -60,7 +60,7 @@
       (render #P"project.html"
               `(:project-name ,project-name
                 :ql-dist-version ,(project-ql-dist-version project)
-                :homepage    ,(project-homepage-url project)
+                :homepage    ,(project-homepage-url* project)
                 :repos-url   ,(project-repos-url project)
                 :archive-url ,(project-archive-url project)
                 :readme ,(let ((readme (project-readme project)))
@@ -83,7 +83,7 @@
     (render #P"api.html"
             `(:project-name ,project-name
               :ql-dist-version ,(project-ql-dist-version project)
-              :homepage    ,(project-homepage-url project)
+              :homepage    ,(project-homepage-url* project)
               :repos-url   ,(project-repos-url project)
               :archive-url ,(project-archive-url project)
               :systems ,(mapcar (lambda (system)
