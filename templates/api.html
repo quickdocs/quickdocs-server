@@ -76,19 +76,19 @@
                 {% if slot.accessors %}
                 <span class="label">Accessor</span>:
                 {% for accessor in slot.accessors %}
-                <code class="symbol-name">{{ accessor }}</code>{% if not forloop.last %} {% endif %}
+                <code class="symbol-name">{{ accessor | symbol }}</code>{% if not forloop.last %}, {% endif %}
                 {% endfor %}
                 {% endif %}
                 {% if slot.readers %}
                 <span class="label">Reader</span>:
                 {% for reader in slot.readers %}
-                <code class="symbol-name">{{ reader }}</code>{% if not forloop.last %} {% endif %}
+                <code class="symbol-name">{{ reader | symbol }}</code>{% if not forloop.last %}, {% endif %}
                 {% endfor %}
                 {% endif %}
                 {% if slot.writers %}
                 <span class="label">Writer</span>:
                 {% for writer in slot.writer %}
-                <code class="symbol-name">{{ writer }}</code>{% if not forloop.last %} {% endif %}
+                <code class="symbol-name">{{ writer | symbol }}</code>{% if not forloop.last %}, {% endif %}
                 {% endfor %}
                 {% endif %}
               </dt>
