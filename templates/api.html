@@ -65,9 +65,10 @@
             </span>
             {% endif %}
             {% if symbol.initial-value %}
+            <span class="initial-value">{{ symbol.initial-value }}</span>
             {% endif %}
             <div class="docstring">{{ symbol.docstring }}</div>
-            {% if symbol.type == "class" %}
+            {% if symbol.type == "class" or symbol.type == "struct" %}
             {% if symbol.slots %}
             <dl class="slot-list">
               {% for slot in symbol.slots %}
