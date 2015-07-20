@@ -67,6 +67,9 @@
             {% if symbol.superclasses %}
             inherits ({% for superclass in symbol.superclasses %}<code class="symbol-name">{{ superclass | symbol }}</code>{% if not forloop.last %}, {% endif %}{% endfor %})
             {% endif %}
+            {% if symbol.include-structs %}
+            includes ({% for include in symbol.include-structs %}<code class="symbol-name">{{ include | symbol }}</code>{% if not forloop.last %}, {% endif %}{% endfor %})
+            {% endif %}
             {% if symbol.initial-value %}
             <span class="initial-value">{{ symbol.initial-value }}</span>
             {% endif %}
