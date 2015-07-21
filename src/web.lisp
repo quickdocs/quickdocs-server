@@ -39,7 +39,8 @@
 
 (defroute "/" ()
   (render #P"index.html"
-          (list :ql-dist-version (preference "ql-dist-version"))))
+          (list :ql-dist-version (preference "ql-dist-version")
+                :app-env (appenv))))
 
 @route GET "/:project-name/"
 (defun project-page (&key project-name)
