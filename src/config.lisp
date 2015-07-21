@@ -26,7 +26,10 @@
   '())
 
 (defconfig |production|
-  '(:error-log #P"/var/log/apps/quickdocs_error.log"))
+  '(:error-log #P"/var/log/apps/quickdocs_error.log"
+    :databases ((:maindb :mysql
+                 :database-name "quickdocs"
+                 :username "root"))))
 
 (defconfig |test|
   '())

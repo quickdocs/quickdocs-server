@@ -29,7 +29,7 @@
 (defvar *web* (make-instance '<web>))
 (defmethod lack.component:call :around ((app <web>) env)
   (let ((datafly:*connection*
-          (datafly:connect-cached :mysql :username "root" :database-name "quickdocs")))
+          (apply #'datafly:connect-cached (cdr (assoc :maindb (config :databases))))))
     (call-next-method)))
 (clear-routing-rules *web*)
 
