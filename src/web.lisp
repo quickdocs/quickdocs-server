@@ -30,7 +30,11 @@
 (defmethod lack.component:call :around ((app <web>) env)
   (let ((datafly:*connection*
           (apply #'datafly:connect-cached (cdr (assoc :maindb (config :databases))))))
-    (call-next-method)))
+    (prog1
+        (call-next-method)
+      ;; Clear caches
+      (setf quickdocs-server.search::*ql-download-stats* nil
+            quickdocs-database.preference::*preference* nil))))
 (clear-routing-rules *web*)
 
 
