@@ -36,7 +36,7 @@ def git_pull():
 
 def deploy_server():
     git_pull()
-    sudo('supervisorctl restart %s' % env.project_name, shell=False)
+    sudo('supervisorctl restart quickdocs', shell=False)
 
 def deploy_updater():
     git_pull()
