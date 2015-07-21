@@ -1,0 +1,32 @@
+("quicklisp" .
+ (:class qlot.source.ql:source-ql-all
+  :initargs (:project-name "quicklisp" :%version :latest)
+  :version "2015-07-10"))
+("datafly" .
+ (:class qlot.source.github:source-github
+  :initargs (:project-name "datafly" :repos "fukamachi/datafly" :ref nil :branch nil :tag nil)
+  :version "github-422af45132f955301e64d6c42d4a792893a7bb7f"
+  :repos "fukamachi/datafly"
+  :url "https://github.com/fukamachi/datafly/archive/422af45132f955301e64d6c42d4a792893a7bb7f.tar.gz"
+  :ref "422af45132f955301e64d6c42d4a792893a7bb7f"))
+("djula" .
+ (:class qlot.source.github:source-github
+  :initargs (:project-name "djula" :repos "mmontone/djula" :ref nil :branch nil :tag nil)
+  :version "github-c21aabc797c0110df7804d63e968f10f09f32355"
+  :repos "mmontone/djula"
+  :url "https://github.com/mmontone/djula/archive/c21aabc797c0110df7804d63e968f10f09f32355.tar.gz"
+  :ref "c21aabc797c0110df7804d63e968f10f09f32355"))
+("quickdocs-database" .
+ (:class qlot.source.github:source-github
+  :initargs (:project-name "quickdocs-database" :repos "quickdocs/quickdocs-database" :ref nil :branch nil :tag nil)
+  :version "github-7a81853af0171c47af08a419712c2691b08dd767"
+  :repos "quickdocs/quickdocs-database"
+  :url "https://github.com/quickdocs/quickdocs-database/archive/7a81853af0171c47af08a419712c2691b08dd767.tar.gz"
+  :ref "7a81853af0171c47af08a419712c2691b08dd767"))
+("quickdocs-serializer" .
+ (:class qlot.source.github:source-github
+  :initargs (:project-name "quickdocs-serializer" :repos "quickdocs/quickdocs-serializer" :ref nil :branch nil :tag nil)
+  :version "github-92bbb57630cbf2099df406f3c8290e8938f77be2"
+  :repos "quickdocs/quickdocs-serializer"
+  :url "https://github.com/quickdocs/quickdocs-serializer/archive/92bbb57630cbf2099df406f3c8290e8938f77be2.tar.gz"
+  :ref "92bbb57630cbf2099df406f3c8290e8938f77be2"))
