@@ -26,7 +26,7 @@
   '())
 
 (defconfig |production|
-  '())
+  '(:error-log #P"/var/log/apps/quickdocs_error.log"))
 
 (defconfig |test|
   '())
