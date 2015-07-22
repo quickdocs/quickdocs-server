@@ -397,6 +397,10 @@ ul {
   padding-bottom: 40px;
   border-top: 1px dotted #CCC;
 }
+.system header .description {
+  margin: 15px 0 10px 10px !important;
+  color: #666;
+}
 .toc {
   position: absolute;
   left: 10px;
@@ -443,8 +447,9 @@ ul {
 }
 .api .lambda-list {
   display: inline-block;
-  margin-left: 8px;
+  margin-left: 4px;
   color: #555;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
 }
 .api .lambda-list .symbol-name {
   font-size: 95%;
@@ -453,7 +458,7 @@ ul {
 .api .lambda-list .keyword {
   color: #777;
   font-style: italic;
-  font-size: 90%;
+  font-size: 100%;
 }
 .api .initial-value {
   color: #777;
@@ -480,9 +485,10 @@ ul {
 }
 .api .symbol-type {
   position: absolute;
-  left: -78px;
+  left: -80px;
   display: inline-block;
   padding-right: 10px;
+  font-style: italic;
   font-size: 85%;
   text-align: right;
   width: 60px;
@@ -516,16 +522,13 @@ ul {
 .api .docstring {
   margin: 5px 0 10px;
   font-size: 90%;
-  color: #333;
+  color: #666;
   line-height: 1.5;
 }
 .api .docstring pre {
   white-space: pre-wrap;
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-.api .description {
-  margin: 15px 0 10px 10px !important;
 }
 .error {
   margin-bottom: 20px;

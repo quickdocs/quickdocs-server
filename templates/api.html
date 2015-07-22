@@ -43,7 +43,7 @@
   <div class="api">
     {% for package in system.packages %}
       <section class="package">
-        <h2 id="package-{{ package.name }}">{{ package.name }}</h2>
+        <h2 id="package-{{ package.name }}"><a href="#package-{{ package.name }}">{{ package.name }}</a></h2>
         {% if package.docstring %}
         <div class="docstring"><pre>{{ package.docstring }}</pre></div>
         {% endif %}
@@ -52,13 +52,7 @@
           {% if symbol.externalp %}
           <li class="symbol">
             <span class="symbol-type label {{ symbol.type }}">{{ symbol.type | capfirst }}</span>
-            <code class="symbol-name">
-            {% if symbol.setfp %}
-            (setf {{ symbol.name }})
-            {% else %}
-            {{ symbol.name }}
-            {% endif %}
-            </code>
+            <code class="symbol-name">{% if symbol.setfp %}(setf {{ symbol.name }}){% else %}{{ symbol.name }}{% endif %}</code>
             {% if symbol.lambda-list %}
             <span class="lambda-list">
               {{ symbol.lambda-list | lambda-list | safe }}
@@ -71,7 +65,7 @@
             includes ({% for include in symbol.include-structs %}<code class="symbol-name">{{ include | symbol }}</code>{% if not forloop.last %}, {% endif %}{% endfor %})
             {% endif %}
             {% if symbol.initial-value %}
-            <span class="initial-value">{{ symbol.initial-value }}</span>
+            <span class="initial-value">{{ symbol.initial-value | lower }}</span>
             {% endif %}
             <div class="docstring">{{ symbol.docstring }}</div>
             {% if symbol.type == "class" or symbol.type == "struct" %}
