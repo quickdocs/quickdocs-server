@@ -20,16 +20,15 @@
 (defparameter *template-directory* (merge-pathnames #P"templates/" *application-root*))
 
 (defconfig :common
-  `(:databases ((:maindb :sqlite3 :database-name ":memory:"))))
+  `(:databases ((:maindb :mysql
+                 :database-name "quickdocs"
+                 :username "root"))))
 
 (defconfig |development|
   '())
 
 (defconfig |production|
-  '(:error-log #P"/var/log/apps/quickdocs_error.log"
-    :databases ((:maindb :mysql
-                 :database-name "quickdocs"
-                 :username "root"))))
+  '(:error-log #P"/var/log/apps/quickdocs_error.log"))
 
 (defconfig |test|
   '())
