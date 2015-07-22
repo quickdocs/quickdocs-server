@@ -36,6 +36,8 @@ def git_pull():
 
 def deploy_server():
     git_pull()
+    with cd(env.directory):
+      run('qlot install')
     sudo('supervisorctl restart quickdocs', shell=False)
 
 def deploy_updater():
