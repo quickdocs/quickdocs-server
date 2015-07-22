@@ -59,13 +59,13 @@
             </span>
             {% endif %}
             {% if symbol.superclasses %}
-            inherits ({% for superclass in symbol.superclasses %}<code class="symbol-name">{{ superclass | symbol }}</code>{% if not forloop.last %}, {% endif %}{% endfor %})
+            &nbsp;({% for superclass in symbol.superclasses %}<code class="symbol-name">{{ superclass | symbol }}</code>{% if not forloop.last %}, {% endif %}{% endfor %})
             {% endif %}
             {% if symbol.include-structs %}
             includes ({% for include in symbol.include-structs %}<code class="symbol-name">{{ include | symbol }}</code>{% if not forloop.last %}, {% endif %}{% endfor %})
             {% endif %}
             {% if symbol.initial-value %}
-            <span class="initial-value">{{ symbol.initial-value | lower }}</span>
+            <pre class="initial-value">{{ symbol.initial-value | lower }}</pre>
             {% endif %}
             <div class="docstring">{{ symbol.docstring }}</div>
             {% if symbol.type == "class" or symbol.type == "struct" %}
@@ -75,19 +75,19 @@
               <dt>
                 <code class="symbol-name">{{ slot.name | symbol }}</code>
                 {% if slot.accessors %}
-                <span class="label">Accessor</span>:
+                &nbsp;&nbsp;<span class="label">Accessor</span>:
                 {% for accessor in slot.accessors %}
                 <code class="symbol-name">{{ accessor | symbol }}</code>{% if not forloop.last %}, {% endif %}
                 {% endfor %}
                 {% endif %}
                 {% if slot.readers %}
-                <span class="label">Reader</span>:
+                &nbsp;&nbsp;<span class="label">Reader</span>:
                 {% for reader in slot.readers %}
                 <code class="symbol-name">{{ reader | symbol }}</code>{% if not forloop.last %}, {% endif %}
                 {% endfor %}
                 {% endif %}
                 {% if slot.writers %}
-                <span class="label">Writer</span>:
+                &nbsp;&nbsp;<span class="label">Writer</span>:
                 {% for writer in slot.writer %}
                 <code class="symbol-name">{{ writer | symbol }}</code>{% if not forloop.last %}, {% endif %}
                 {% endfor %}
