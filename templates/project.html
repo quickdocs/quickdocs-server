@@ -13,7 +13,7 @@
 <article>
 {% if readme %}
 <section class="readme">
-  <div class="readme-body">{{ readme | safe }}</div>
+  <div class="readme-body">{% if readme.converted %}{{ readme.converted | safe }}{% else %}<pre>{{ readme.raw }}</pre>{% endif %}</div>
 </section>
 {% endif %}
 

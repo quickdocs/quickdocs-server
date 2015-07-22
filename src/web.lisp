@@ -69,7 +69,9 @@
                 :repos-url   ,(project-repos-url project)
                 :archive-url ,(project-archive-url project)
                 :readme ,(let ((readme (project-readme project)))
-                           (when readme (project-readme-converted readme)))
+                           (when readme
+                             (list :converted (project-readme-converted readme)
+                                   :raw (project-readme-raw readme))))
                 :authors ,(project-authors project)
                 :maintainers ,(project-maintainers project)
                 :licenses ,(project-licenses project)
