@@ -47,9 +47,9 @@
         {% if package.docstring %}
         <div class="docstring"><pre>{{ package.docstring }}</pre></div>
         {% endif %}
+        {% if package.external-symbols %}
         <ul>
-          {% for symbol in package.symbols %}
-          {% if symbol.externalp %}
+          {% for symbol in package.external-symbols %}
           <li class="symbol">
             <span class="symbol-type label {{ symbol.type }}">{{ symbol.type | capfirst }}</span>
             <code class="symbol-name">{% if symbol.setfp %}(setf {{ symbol.name }}){% else %}{{ symbol.name }}{% endif %}</code>
@@ -99,13 +99,15 @@
               {% endfor %}
             </dl>
             {% else %}
-            No slots
+            <div class="nothing">No slots.</div>
             {% endif %}
             {% endif %}
           </li>
-          {% endif %}
           {% endfor %}
         </ul>
+        {% else %}
+        <div class="nothing">No exported symbols.</div>
+        {% endif %}
         {% if package.reexport-symbols %}
         <h3>Also exports</h3>
         <ul class="also-exports">
@@ -116,6 +118,9 @@
         {% endif %}
       </section>
     {% endfor %}
+    {% if not system.packages %}
+      <div class="nothing">No packages.</div>
+    {% endif %}
   </div>
 </article>
 {% endfor %}

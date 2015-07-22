@@ -558,6 +558,10 @@ ul {
   margin-bottom: 0;
   overflow: scroll;
 }
+.nothing {
+  font-style: italic;
+  color: #888;
+}
 section {
   margin-bottom: 40px;
 }

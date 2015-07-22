@@ -107,6 +107,11 @@
                                                                          (getf symbol :name)))
                                                                   symbol)
                                                                 (getf package :symbols)))
+                                                  (setf (getf package :external-symbols)
+                                                        (remove-if-not
+                                                         (lambda (symbol)
+                                                           (getf symbol :externalp))
+                                                         (getf package :symbols)))
                                                   package)
                                                 (system-extracted-info-packages
                                                  (system-extracted-info system)))))
