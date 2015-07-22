@@ -226,6 +226,9 @@ ul {
 .readme-body pre code {
   background-color: transparent;
 }
+.readme-body img {
+  max-width: 100%;
+}
 .dependencies,
 .depending {
   position: relative;
