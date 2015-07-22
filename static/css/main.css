@@ -444,6 +444,9 @@ ul {
 .api ul li {
   margin: 30px 0;
 }
+.api ul.also-exports li {
+  margin: 0;
+}
 .api code.symbol-name {
   font-weight: normal;
   color: #444;

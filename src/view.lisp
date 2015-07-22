@@ -57,6 +57,11 @@
 (djula::def-filter :symbol (it)
   (quickdocs-serializer:symb-name it))
 
+(djula::def-filter :symbol-with-package (it)
+  (format nil "~A:~A"
+          (quickdocs-serializer:symb-package it)
+          (quickdocs-serializer:symb-name it)))
+
 (djula::def-filter :lambda-list (it)
   (labels ((maptree (fn obj)
              (if (consp obj)

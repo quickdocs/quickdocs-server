@@ -106,6 +106,14 @@
           {% endif %}
           {% endfor %}
         </ul>
+        {% if package.reexport-symbols %}
+        <h3>Also exports</h3>
+        <ul class="also-exports">
+        {% for symbol in package.reexport-symbols %}
+          <li><code class="symbol-name">{{ symbol | symbol-with-package }}</code></li>
+        {% endfor %}
+        </ul>
+        {% endif %}
       </section>
     {% endfor %}
   </div>
