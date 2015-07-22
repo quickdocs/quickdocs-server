@@ -597,16 +597,19 @@ header .header-links {
 }
 header .header-links a {
   display: inline-block;
-  padding: 10px 15px;
-  border-radius: 4px;
+  margin-top: 2px;
+  padding: 8px 12px;
+  border-radius: 3px;
   color: white;
   background: #6fbf42;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #6fbf42), color-stop(1, #4e872e));
-  background: -ms-linear-gradient(top, #6fbf42, #4e872e);
-  background: -moz-linear-gradient(center top, #6fbf42 0%, #4e872e 100%);
-  background: -o-linear-gradient(#6fbf42, #4e872e);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6fbf42', endColorstr='#4e872e', GradientType=0);
   text-decoration: none;
+}
+header .header-links a:hover {
+  transition-duration: 0.1s;
+  -moz-transition-duration: 0.1s;
+  -webkit-transition-duration: 0.1s;
+  -o-transition-duration: 0.1s;
+  background: #70c855;
 }
 header .search-query {
   display: inline-block;
