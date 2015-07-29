@@ -16,6 +16,13 @@
   :repos "mmontone/djula"
   :url "https://github.com/mmontone/djula/archive/c21aabc797c0110df7804d63e968f10f09f32355.tar.gz"
   :ref "c21aabc797c0110df7804d63e968f10f09f32355"))
+("fast-http" .
+ (:class qlot.source.github:source-github
+  :initargs (:project-name "fast-http" :repos "fukamachi/fast-http" :ref nil :branch nil :tag nil)
+  :version "github-77e41abe17f2aa76f38cf84d6619159a613ab415"
+  :repos "fukamachi/fast-http"
+  :url "https://github.com/fukamachi/fast-http/archive/77e41abe17f2aa76f38cf84d6619159a613ab415.tar.gz"
+  :ref "77e41abe17f2aa76f38cf84d6619159a613ab415"))
 ("quickdocs-database" .
  (:class qlot.source.github:source-github
   :initargs (:project-name "quickdocs-database" :repos "quickdocs/quickdocs-database" :ref nil :branch nil :tag nil)
