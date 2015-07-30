@@ -7,7 +7,8 @@
         :quickdocs-server.db
         :datafly
         :sxql
-        :quickdocs-database)
+        :quickdocs-database
+        :split-sequence)
   (:import-from :quickdocs-server.search
                 :search-projects
                 :download-stats)
@@ -136,6 +137,19 @@
 (defun redirect-to-project (&key project-name)
   (redirect (format nil "/~A/" (quri:url-encode project-name)) 301)
   "")
+
+@route GET "/badge/:project-name.svg"
+(defun quicklisp-badge (&key project-name)
+  (let ((project (and project-name
+                      (retrieve-project project-name))))
+    (unless project
+      (throw-code 404))
+
+    (redirect
+     (destructuring-bind (y m d)
+         (split-sequence #\- (project-release-version project))
+       (format nil "https://img.shields.io/badge/Quicklisp-~A--~A--~A-blue.svg"
+               y m d)))))
 
 
 ;;
