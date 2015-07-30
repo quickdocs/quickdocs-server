@@ -7,8 +7,7 @@
         :quickdocs-server.db
         :datafly
         :sxql
-        :quickdocs-database
-        :split-sequence)
+        :quickdocs-database)
   (:import-from :quickdocs-server.search
                 :search-projects
                 :download-stats)
@@ -143,14 +142,14 @@
   (let ((project (and project-name
                       (retrieve-project project-name))))
 
+    (setf (response-headers *response*)
+          (list :content-type "image/svg+xml"))
+
     (if project
-        (redirect
-         (destructuring-bind (y m d)
-             (split-sequence #\- (project-release-version project))
-           (format nil "https://img.shields.io/badge/Quicklisp-~A--~A--~A-blue.svg"
-                   y m d)))
-        (redirect
-         "https://img.shields.io/badge/Quicklisp-not%20available-lightgrey.svg"))))
+        (format nil
+                "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"137\" height=\"20\"><linearGradient id=\"b\" x2=\"0\" y2=\"100%\"><stop offset=\"0\" stop-color=\"#bbb\" stop-opacity=\".1\"/><stop offset=\"1\" stop-opacity=\".1\"/></linearGradient><mask id=\"a\"><rect width=\"137\" height=\"20\" rx=\"3\" fill=\"#fff\"/></mask><g mask=\"url(#a)\"><path fill=\"#555\" d=\"M0 0h61v20H0z\"/><path fill=\"#007ec6\" d=\"M61 0h76v20H61z\"/><path fill=\"url(#b)\" d=\"M0 0h137v20H0z\"/></g><g fill=\"#fff\" text-anchor=\"middle\" font-family=\"DejaVu Sans,Verdana,Geneva,sans-serif\" font-size=\"11\"><text x=\"30.5\" y=\"15\" fill=\"#010101\" fill-opacity=\".3\">Quicklisp</text><text x=\"30.5\" y=\"14\">Quicklisp</text><text x=\"98\" y=\"15\" fill=\"#010101\" fill-opacity=\".3\">~A</text><text x=\"98\" y=\"14\">~:*~A</text></g></svg>"
+                (project-release-version project))
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"144\" height=\"20\"><linearGradient id=\"b\" x2=\"0\" y2=\"100%\"><stop offset=\"0\" stop-color=\"#bbb\" stop-opacity=\".1\"/><stop offset=\"1\" stop-opacity=\".1\"/></linearGradient><mask id=\"a\"><rect width=\"144\" height=\"20\" rx=\"3\" fill=\"#fff\"/></mask><g mask=\"url(#a)\"><path fill=\"#555\" d=\"M0 0h61v20H0z\"/><path fill=\"#9f9f9f\" d=\"M61 0h83v20H61z\"/><path fill=\"url(#b)\" d=\"M0 0h144v20H0z\"/></g><g fill=\"#fff\" text-anchor=\"middle\" font-family=\"DejaVu Sans,Verdana,Geneva,sans-serif\" font-size=\"11\"><text x=\"30.5\" y=\"15\" fill=\"#010101\" fill-opacity=\".3\">Quicklisp</text><text x=\"30.5\" y=\"14\">Quicklisp</text><text x=\"101.5\" y=\"15\" fill=\"#010101\" fill-opacity=\".3\">not available</text><text x=\"101.5\" y=\"14\">not available</text></g></svg>")))
 
 
 ;;
