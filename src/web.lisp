@@ -142,14 +142,15 @@
 (defun quicklisp-badge (&key project-name)
   (let ((project (and project-name
                       (retrieve-project project-name))))
-    (unless project
-      (throw-code 404))
 
-    (redirect
-     (destructuring-bind (y m d)
-         (split-sequence #\- (project-release-version project))
-       (format nil "https://img.shields.io/badge/Quicklisp-~A--~A--~A-blue.svg"
-               y m d)))))
+    (if project
+        (redirect
+         (destructuring-bind (y m d)
+             (split-sequence #\- (project-release-version project))
+           (format nil "https://img.shields.io/badge/Quicklisp-~A--~A--~A-blue.svg"
+                   y m d)))
+        (redirect
+         "https://img.shields.io/badge/Quicklisp-not%20available-lightgrey.svg"))))
 
 
 ;;
