@@ -34,7 +34,6 @@
      `(:backtrace
        :output ,(getf (config) :error-log))
      nil)
- :session
  (if (productionp)
      nil
      (lambda (app)
