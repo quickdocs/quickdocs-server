@@ -64,7 +64,7 @@
          (rows (retrieve-all
                 (select (:project_name :category)
                   (from :cliki_project_category)
-                  (where (:like (:lower :category) (format nil "%~(~A~)%" query))))))
+                  (where (:like :category (format nil "%~(~A~)%" query))))))
          (rows (remove-if-not
                 (lambda (row)
                   (ppcre:scan scanner (getf row :category)))
