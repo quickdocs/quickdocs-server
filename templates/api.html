@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
 <header>
-  <h2 class="project-name"><a href="/{{ project-name }}/">{{ project-name }}</a></h2>
+  <h2 class="project-name"><a href="/{{ project-name | urlencode }}/">{{ project-name }}</a></h2>
   <span class="subtitle">API Reference</span>
   {% include "partials/header-links.html" %}
 </header>

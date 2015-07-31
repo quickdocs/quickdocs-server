@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
 <header>
-  <h2 class="project-name"><a href="/{{ project-name }}/">{{ project-name }}</a></h2>
+  <h2 class="project-name"><a href="/{{ project-name | urlencode }}/">{{ project-name }}</a></h2>
   <span class="subtitle ql-version">{{ ql-dist-version }}</span>
   {% include "partials/header-links.html" %}
 </header>
@@ -51,7 +51,7 @@
   <ul class="folding-list">
     {% for dependency in dependencies %}
     <li>
-      <a href="/{{ dependency.name }}">
+      <a href="/{{ dependency.name | urlencode }}/">
         <span class="name">{{ dependency.name }}</span>
         <span class="description">{{ dependency.description }}</span>
       </a>
@@ -70,7 +70,7 @@
   <ul class="folding-list">
     {% for dependee in dependees %}
     <li>
-      <a href="/{{ dependee.name }}">
+      <a href="/{{ dependee.name | urlencode }}/">
         <span class="name">{{ dependee.name }}</span>
         <span class="description">{{ dependee.description }}</span>
       </a>
@@ -83,7 +83,7 @@
 <aside class="links">
   <h3>Links</h3>
   <ul>
-    <li><a href="/{{ project-name }}/api">API Reference</a></li>
+    <li><a href="/{{ project-name | urlencode }}/api">API Reference</a></li>
     {% if homepage %}
     <li><a href="{{ homepage }}">Website</a></li>
     {% endif %}

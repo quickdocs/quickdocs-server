@@ -23,7 +23,7 @@
 {% for project in projects %}
   <li class="search-result">
     <span class="project-name">
-      <a href="/{{ project.name }}/">{{ project.name }}</a>
+      <a href="/{{ project.name | urlencode }}/">{{ project.name }}</a>
     </span>
     <span class="ql-version">
       {{ project.release-version }}
