@@ -23,6 +23,13 @@
   :repos "fukamachi/fast-http"
   :url "https://github.com/fukamachi/fast-http/archive/77e41abe17f2aa76f38cf84d6619159a613ab415.tar.gz"
   :ref "77e41abe17f2aa76f38cf84d6619159a613ab415"))
+("woo" .
+ (:class qlot.source.github:source-github
+  :initargs (:project-name "woo" :repos "fukamachi/woo" :ref nil :branch "devel" :tag nil)
+  :version "github-7e1b37c072ff877a89339d8e3b03331faf06b3f5"
+  :repos "fukamachi/woo"
+  :url "https://github.com/fukamachi/woo/archive/7e1b37c072ff877a89339d8e3b03331faf06b3f5.tar.gz"
+  :ref "7e1b37c072ff877a89339d8e3b03331faf06b3f5"))
 ("quickdocs-database" .
  (:class qlot.source.github:source-github
   :initargs (:project-name "quickdocs-database" :repos "quickdocs/quickdocs-database" :ref nil :branch nil :tag nil)
