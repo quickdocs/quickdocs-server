@@ -92,13 +92,12 @@
      :as 'project)))
 
 (defun search-by-description (query ql-dist-version)
-  (let ((queries (ppcre:split "\\s+" (string-downcase query))))
-    (retrieve-all
-     (select :project.*
-       (from :cliki)
-       (left-join :project :on (:= :cliki.project_name :project.name))
-       (where `(:and (:= :ql_dist_version ,ql-dist-version)
-                     ,@(mapcar
-                        (lambda (query) `(:like (:lower :body) ,(format nil "%~A%" query)))
-                        queries))))
-     :as 'project)))
+  (retrieve-all
+   (select :project.*
+     (from :project)
+     (left-join :cliki :on (:= :project.name :cliki.project_name))
+     (left-join :repos_info :on (:= :project.name :repos_info.project_name))
+     (where `(:and (:= :ql_dist_version ,ql-dist-version)
+                   (:or (:like :repos_info.description ,(format nil "%~A%" query))
+                        (:like :body ,(format nil "%~A%" query))))))
+   :as 'project))
