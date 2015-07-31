@@ -12,17 +12,24 @@
 ("djula" .
  (:class qlot.source.github:source-github
   :initargs (:project-name "djula" :repos "mmontone/djula" :ref nil :branch nil :tag nil)
-  :version "github-c21aabc797c0110df7804d63e968f10f09f32355"
+  :version "github-414eb2dcc7798a70f7079249bab7e5190e6b9700"
   :repos "mmontone/djula"
-  :url "https://github.com/mmontone/djula/archive/c21aabc797c0110df7804d63e968f10f09f32355.tar.gz"
-  :ref "c21aabc797c0110df7804d63e968f10f09f32355"))
+  :url "https://github.com/mmontone/djula/archive/414eb2dcc7798a70f7079249bab7e5190e6b9700.tar.gz"
+  :ref "414eb2dcc7798a70f7079249bab7e5190e6b9700"))
+("proc-parse" .
+ (:class qlot.source.github:source-github
+  :initargs (:project-name "proc-parse" :repos "fukamachi/proc-parse" :ref nil :branch nil :tag nil)
+  :version "github-3225e4e04ebe5c2569accae39466048e3244c681"
+  :repos "fukamachi/proc-parse"
+  :url "https://github.com/fukamachi/proc-parse/archive/3225e4e04ebe5c2569accae39466048e3244c681.tar.gz"
+  :ref "3225e4e04ebe5c2569accae39466048e3244c681"))
 ("fast-http" .
  (:class qlot.source.github:source-github
   :initargs (:project-name "fast-http" :repos "fukamachi/fast-http" :ref nil :branch nil :tag nil)
-  :version "github-77e41abe17f2aa76f38cf84d6619159a613ab415"
+  :version "github-fe8e48360fcceb369ba900b07f7cc9a48f455c44"
   :repos "fukamachi/fast-http"
-  :url "https://github.com/fukamachi/fast-http/archive/77e41abe17f2aa76f38cf84d6619159a613ab415.tar.gz"
-  :ref "77e41abe17f2aa76f38cf84d6619159a613ab415"))
+  :url "https://github.com/fukamachi/fast-http/archive/fe8e48360fcceb369ba900b07f7cc9a48f455c44.tar.gz"
+  :ref "fe8e48360fcceb369ba900b07f7cc9a48f455c44"))
 ("woo" .
  (:class qlot.source.github:source-github
   :initargs (:project-name "woo" :repos "fukamachi/woo" :ref nil :branch "devel" :tag nil)
