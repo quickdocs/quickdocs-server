@@ -36,7 +36,7 @@
     <dt>Categories</dt>
     <dd>
       {% for category in categories %}
-      <a href="/search?q={{ category }}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
+      <a href="/search?q={{ category | urlencode }}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
       {% endfor %}
     </dd>
     {% endif %}
