@@ -52,4 +52,5 @@
 .readme-body pre {
   padding: 15px;
   border-radius: 5px;
+  word-wrap: break-word;
 }
