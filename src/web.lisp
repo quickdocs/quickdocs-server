@@ -64,7 +64,7 @@
                     (project-dependees project))))
       (render #P"project.html"
               `(:project-name ,project-name
-                :ql-dist-version ,(project-ql-dist-version project)
+                :ql-dist-version ,(project-release-version project)
                 :homepage    ,(project-homepage-url* project)
                 :repos-url   ,(project-repos-url project)
                 :archive-url ,(project-archive-url project)
