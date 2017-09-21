@@ -120,7 +120,6 @@
 @route GET "/search"
 (defun search-page (&key |q|)
   (let ((projects (search-projects |q| (preference "ql-dist-version"))))
-
     (render #P"search.html"
             (list
              :projects (mapcar (lambda (project)

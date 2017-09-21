@@ -44,7 +44,7 @@
        :test #'eql
        :key #'project-id
        :from-end t)
-      (search-all-projects ql-dist-version)))
+      nil))
 
 @export
 (defun search-all-projects (&optional (ql-dist-version
