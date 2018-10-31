@@ -40,10 +40,10 @@
 ("quickdocs-database" .
  (:class qlot.source.github:source-github
   :initargs (:project-name "quickdocs-database" :repos "quickdocs/quickdocs-database" :ref nil :branch nil :tag nil)
-  :version "github-e16e09c3b65536070ef4ba61d120474b5a3c2c43"
+  :version "github-9eb27880fadc55e64c9493db1dc0913591b10a6c"
   :repos "quickdocs/quickdocs-database"
-  :url "https://github.com/quickdocs/quickdocs-database/archive/e16e09c3b65536070ef4ba61d120474b5a3c2c43.tar.gz"
-  :ref "e16e09c3b65536070ef4ba61d120474b5a3c2c43"))
+  :url "https://github.com/quickdocs/quickdocs-database/archive/9eb27880fadc55e64c9493db1dc0913591b10a6c.tar.gz"
+  :ref "9eb27880fadc55e64c9493db1dc0913591b10a6c"))
 ("quickdocs-serializer" .
  (:class qlot.source.github:source-github
   :initargs (:project-name "quickdocs-serializer" :repos "quickdocs/quickdocs-serializer" :ref nil :branch nil :tag nil)
